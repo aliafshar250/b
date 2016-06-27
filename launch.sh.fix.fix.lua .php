@@ -2677,6 +2677,470 @@ local function run(msg, matches)
                          
 		end
 
+				if matches[1] == 'قفل کردن' and is_momod(msg) then
+			local target = msg.to.id
+			     if matches[2] == 'همه' then
+      	local safemode ={
+        lock_group_links(msg, data, target),
+		lock_group_tag(msg, data, target),
+		lock_group_spam(msg, data, target),
+		lock_group_flood(msg, data, target),
+		lock_group_arabic(msg, data, target),
+		lock_group_membermod(msg, data, target),
+		lock_group_rtl(msg, data, target),
+		lock_group_tgservice(msg, data, target),
+		lock_group_sticker(msg, data, target),
+		lock_group_contacts(msg, data, target),
+		lock_group_english(msg, data, target),
+		lock_group_fwd(msg, data, target),
+		lock_group_reply(msg, data, target),
+		lock_group_join(msg, data, target),
+		lock_group_emoji(msg, data, target),
+		lock_group_username(msg, data, target),
+		lock_group_fosh(msg, data, target),
+		lock_group_media(msg, data, target),
+		lock_group_leave(msg, data, target),
+		lock_group_bots(msg, data, target),
+		lock_group_operator(msg, data, target),
+      	}
+      	return lock_group_all(msg, data, target), safemode
+      end
+			     if matches[2] == 'اتحاد' then
+      	local etehad ={
+        lock_group_links(msg, data, target),
+		lock_group_tag(msg, data, target),
+		lock_group_spam(msg, data, target),
+		lock_group_flood(msg, data, target),
+		unlock_group_arabic(msg, data, target),
+		lock_group_membermod(msg, data, target),
+		unlock_group_rtl(msg, data, target),
+		lock_group_tgservice(msg, data, target),
+		lock_group_sticker(msg, data, target),
+		unlock_group_contacts(msg, data, target),
+		unlock_group_english(msg, data, target),
+		unlock_group_fwd(msg, data, target),
+		unlock_group_reply(msg, data, target),
+		lock_group_join(msg, data, target),
+		unlock_group_emoji(msg, data, target),
+		unlock_group_username(msg, data, target),
+		lock_group_fosh(msg, data, target),
+		unlock_group_media(msg, data, target),
+		lock_group_leave(msg, data, target),
+		lock_group_bots(msg, data, target),
+		unlock_group_operator(msg, data, target),
+      	}
+      	return lock_group_etehad(msg, data, target), etehad
+      end
+    
+			     if matches[2] == 'نرمال' then
+      	local normal ={
+        lock_group_links(msg, data, target),
+		lock_group_tag(msg, data, target),
+		lock_group_spam(msg, data, target),
+		lock_group_flood(msg, data, target),
+		lock_group_rtl(msg, data, target),
+		lock_group_tgservice(msg, data, target),
+		lock_group_sticker(msg, data, target),
+		unlock_group_contacts(msg, data, target),
+		lock_group_emoji(msg, data, target),
+		lock_group_username(msg, data, target),
+		lock_group_bots(msg, data, target),
+		lock_group_operator(msg, data, target),
+      	}
+      	return lock_group_normal(msg, data, target), normal
+      end
+			     if matches[2] == 'خانوادگی' then
+      	local family ={
+        lock_group_links(msg, data, target),
+		lock_group_tag(msg, data, target),
+		lock_group_spam(msg, data, target),
+		lock_group_flood(msg, data, target),
+		lock_group_rtl(msg, data, target),
+		lock_group_tgservice(msg, data, target),
+		lock_group_sticker(msg, data, target),
+		lock_group_contacts(msg, data, target),
+		lock_group_fosh(msg, data, target),
+		lock_group_emoji(msg, data, target),
+		lock_group_username(msg, data, target),
+		lock_group_bots(msg, data, target),
+		lock_group_operator(msg, data, target),
+      	}
+      	return lock_group_family(msg, data, target), family
+      end
+			     if matches[2] == 'چت ها' then
+      	local chatall ={
+        lock_group_links(msg, data, target),
+		lock_group_tag(msg, data, target),
+		lock_group_spam(msg, data, target),
+		lock_group_flood(msg, data, target),
+		lock_group_tgservice(msg, data, target),
+		lock_group_sticker(msg, data, target),
+		lock_group_media(msg, data, target),
+		lock_group_contacts(msg, data, target),
+		lock_group_emoji(msg, data, target),
+		lock_group_username(msg, data, target),
+		lock_group_english(msg, data, target),
+		lock_group_chat(msg, data, target),
+		lock_group_arabic(msg, data, target),
+      	}
+      	return lock_group_chatall(msg, data, target), chatall
+      end
+			     if matches[2] == 'چت' then
+      	local chat ={
+        lock_group_links(msg, data, target),
+		lock_group_tag(msg, data, target),
+		lock_group_english(msg, data, target),
+		lock_group_chat(msg, data, target),
+		lock_group_arabic(msg, data, target),
+      	}
+      	return lock_group_chat(msg, data, target), chat
+      end 
+			if matches[2] == 'لینک' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked link posting ")
+				return lock_group_links(msg, data, target)
+			end
+			if matches[2] == 'ورود' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked join ")
+				return lock_group_join(msg, data, target)
+			end
+                        if matches[2] == 'تصاویر' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked photo ")
+				return lock_group_photo(msg, data, target)
+			end
+			if matches[2] == 'وبسایت' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked video ")
+				return lock_group_website(msg, data, target)
+			end
+			if matches[2] == 'فیلم' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked video ")
+				return lock_group_video(msg, data, target)
+			end
+            if matches[2] == 'پوکر' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked poker ")
+				return lock_group_poker(msg, data, target)
+			end			
+			if matches[2] == 'موزیک' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked audio ")
+				return lock_group_audio(msg, data, target)
+			end 
+			if matches[2] == 'تگ' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked tag ")
+				return lock_group_tag(msg, data, target)
+			end			
+			if matches[2] == 'اسپم' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked spam ")
+				return lock_group_spam(msg, data, target)
+			end
+			if matches[2] == 'فلود' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked flood ")
+				return lock_group_flood(msg, data, target)
+			end
+			if matches[2] == 'عربی' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked arabic ")
+				return lock_group_arabic(msg, data, target)
+			end
+			if matches[2] == 'کاربران' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked member ")
+				return lock_group_membermod(msg, data, target)
+			end		    
+			if matches[2]:lower() == 'ار تی ال' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked rtl chars. in names")
+				return lock_group_rtl(msg, data, target)
+			end
+			if matches[2] == 'سرویس' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked Tgservice Actions")
+				return lock_group_tgservice(msg, data, target)
+			end
+			if matches[2] == 'استیکر' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked sticker posting")
+				return lock_group_sticker(msg, data, target)
+			end
+			if matches[2] == 'شیر اکانت' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked contact posting")
+				return lock_group_contacts(msg, data, target)
+			end
+			if matches[2] == 'سخت' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked enabled strict settings")
+				return enable_strict_rules(msg, data, target)
+			end
+			if matches[2] == 'انگلیسی' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked english")
+				return lock_group_english(msg, data, target)
+			end
+			if matches[2] == 'فروارد' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked fwd")
+				return lock_group_fwd(msg, data, target)
+			end
+			if matches[2] == 'ریپلای' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked reply")
+				return lock_group_reply(msg, data, target)
+			end
+                        if matches[2] == 'گیف' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked gif")
+				return lock_group_gif(msg, data, target)
+			end
+			if matches[2] == 'اموجی' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked emoji")
+				return lock_group_emoji(msg, data, target)
+			end
+			if matches[2] == 'فحش' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked fosh")
+				return lock_group_fosh(msg, data, target)
+			end
+			if matches[2] == 'رسانه' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked media")
+				return lock_group_media(msg, data, target)
+			end
+			if matches[2] == 'یوزرنیم' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked username")
+				return lock_group_username(msg, data, target)
+			end
+			if matches[2] == 'خروج' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked leave")
+				return lock_group_leave(msg, data, target)
+			end
+			if matches[2] == 'ربات' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked bots")
+				return lock_group_bots(msg, data, target)
+			end
+			if matches[2] == 'اپراتور' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked operator")
+				return lock_group_operator(msg, data, target)
+			end
+		end
+
+		if matches[1] == 'بازکردن' and is_momod(msg) then
+			local target = msg.to.id
+			     if matches[2] == 'همه' then
+      	local dsafemode ={
+        unlock_group_links(msg, data, target),
+		unlock_group_tag(msg, data, target),
+		unlock_group_spam(msg, data, target),
+		unlock_group_flood(msg, data, target),
+		unlock_group_arabic(msg, data, target),
+		unlock_group_membermod(msg, data, target),
+		unlock_group_rtl(msg, data, target),
+		unlock_group_tgservice(msg, data, target),
+		unlock_group_sticker(msg, data, target),
+		unlock_group_contacts(msg, data, target),
+		unlock_group_english(msg, data, target),
+		unlock_group_fwd(msg, data, target),
+		unlock_group_reply(msg, data, target),
+		unlock_group_join(msg, data, target),
+		unlock_group_emoji(msg, data, target),
+		unlock_group_username(msg, data, target),
+		unlock_group_fosh(msg, data, target),
+		unlock_group_media(msg, data, target),
+		unlock_group_leave(msg, data, target),
+		unlock_group_bots(msg, data, target),
+		unlock_group_operator(msg, data, target),
+      	}
+      	return unlock_group_all(msg, data, target), dsafemode
+      end
+	  	if matches[2] == 'اتحاد' then
+      	local detehad ={
+        lock_group_links(msg, data, target),
+		unlock_group_tag(msg, data, target),
+		lock_group_spam(msg, data, target),
+		lock_group_flood(msg, data, target),
+		unlock_group_arabic(msg, data, target),
+		unlock_group_membermod(msg, data, target),
+		unlock_group_rtl(msg, data, target),
+		unlock_group_tgservice(msg, data, target),
+		unlock_group_sticker(msg, data, target),
+		unlock_group_contacts(msg, data, target),
+		unlock_group_english(msg, data, target),
+		unlock_group_fwd(msg, data, target),
+		unlock_group_reply(msg, data, target),
+		unlock_group_join(msg, data, target),
+		unlock_group_emoji(msg, data, target),
+		unlock_group_username(msg, data, target),
+		unlock_group_fosh(msg, data, target),
+		unlock_group_media(msg, data, target),
+		unlock_group_leave(msg, data, target),
+		unlock_group_bots(msg, data, target),
+		unlock_group_operator(msg, data, target),
+      	}
+      	return unlock_group_etehad(msg, data, target), detehad
+      end
+
+			     if matches[2] == 'نرمال' then
+      	local dnormal ={
+        lock_group_links(msg, data, target),
+		unlock_group_tag(msg, data, target),
+		unlock_group_spam(msg, data, target),
+		unlock_group_flood(msg, data, target),
+		unlock_group_rtl(msg, data, target),
+		unlock_group_tgservice(msg, data, target),
+		unlock_group_sticker(msg, data, target),
+		unlock_group_contacts(msg, data, target),
+		unlock_group_emoji(msg, data, target),
+		unlock_group_username(msg, data, target),
+		unlock_group_bots(msg, data, target),
+		unlock_group_operator(msg, data, target),
+      	}
+      	return unlock_group_normal(msg, data, target), dnormal
+      end
+			     if matches[2] == 'خانوادگی' then
+      	local dfamily ={
+        lock_group_links(msg, data, target),
+		unlock_group_tag(msg, data, target),
+		unlock_group_spam(msg, data, target),
+		unlock_group_flood(msg, data, target),
+		unlock_group_rtl(msg, data, target),
+		unlock_group_tgservice(msg, data, target),
+		unlock_group_sticker(msg, data, target),
+		unlock_group_contacts(msg, data, target),
+		unlock_group_fosh(msg, data, target),
+		unlock_group_emoji(msg, data, target),
+		unlock_group_username(msg, data, target),
+		unlock_group_bots(msg, data, target),
+		unlock_group_operator(msg, data, target),
+      	}
+      	return unlock_group_family(msg, data, target), dfamily
+      end
+			     if matches[2] == 'چت ها' then
+      	local dchatall ={
+        lock_group_links(msg, data, target),
+		unlock_group_tag(msg, data, target),
+		unlock_group_spam(msg, data, target),
+		unlock_group_flood(msg, data, target),
+		unlock_group_tgservice(msg, data, target),
+		unlock_group_sticker(msg, data, target),
+		unlock_group_media(msg, data, target),
+		unlock_group_contacts(msg, data, target),
+		unlock_group_emoji(msg, data, target),
+		unlock_group_username(msg, data, target),
+		unlock_group_english(msg, data, target),
+		unlock_group_chat(msg, data, target),
+		unlock_group_arabic(msg, data, target),
+      	}
+      	return unlock_group_chatall(msg, data, target), dchatall
+      end
+			     if matches[2] == 'چت' then
+      	local dchat ={
+        lock_group_links(msg, data, target),
+		unlock_group_tag(msg, data, target),
+		unlock_group_english(msg, data, target),
+		unlock_group_chat(msg, data, target),
+		unlock_group_arabic(msg, data, target),
+      	}
+      	return unlock_group_chat(msg, data, target), dchat
+      end 
+			if matches[2] == 'لینک' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked link posting")
+				return unlock_group_links(msg, data, target)
+			end
+			if matches[2] == 'ورود' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked join")
+				return unlock_group_join(msg, data, target)
+			end
+                        if matches[2] == 'تصاویر' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked photo")
+				return unlock_group_photo(msg, data, target)
+			end 
+			if matches[2] == 'وبسایت' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked video")
+				return unlock_group_website(msg, data, target)
+			end
+			if matches[2] == 'فیلم' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked video")
+				return unlock_group_video(msg, data, target)
+			end
+            if matches[2] == 'پوکر' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked poker")
+				return unlock_group_poker(msg, data, target)
+			end 			
+			if matches[2] == 'موزیک' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked audio")
+				return unlock_group_audio(msg, data, target)
+			end 
+			if matches[2] == 'تگ' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked tag")
+				return unlock_group_tag(msg, data, target)
+			end			
+			if matches[2] == 'اسپم' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked spam")
+				return unlock_group_spam(msg, data, target)
+			end
+			if matches[2] == 'فلود' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked flood")
+				return unlock_group_flood(msg, data, target)
+			end
+			if matches[2] == 'عربی' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked Arabic")
+				return unlock_group_arabic(msg, data, target)
+			end
+			if matches[2] == 'کاربران' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked member ")
+				return unlock_group_membermod(msg, data, target)
+			end                   
+			if matches[2]:lower() == 'ارتی ال' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked RTL chars. in names")
+				return unlock_group_rtl(msg, data, target)
+			end
+				if matches[2] == 'وخ' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked tgservice actions")
+				return unlock_group_tgservice(msg, data, target)
+			end
+			if matches[2] == 'استیکر' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked sticker posting")
+				return unlock_group_sticker(msg, data, target)
+			end
+			if matches[2] == 'شیر اکانت' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked contact posting")
+				return unlock_group_contacts(msg, data, target)
+			end
+			if matches[2] == 'سخت' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked disabled strict settings")
+				return disable_strict_rules(msg, data, target)
+			end
+			if matches[2] == 'انگلیسی' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked english")
+				return unlock_group_english(msg, data, target)
+			end
+			if matches[2] == 'فرارد' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked fwd")
+				return unlock_group_fwd(msg, data, target)
+			end
+			if matches[2] == 'ریپلای' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked reply")
+				return unlock_group_reply(msg, data, target)
+			end
+                        if matches[2] == 'گیف' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked reply")
+				return unlock_group_gif(msg, data, target)
+			end
+			if matches[2] == 'اموجی' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked disabled emoji")
+				return unlock_group_emoji(msg, data, target)
+			end
+			if matches[2] == 'فحش' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked fosh")
+				return unlock_group_fosh(msg, data, target)
+			end
+			if matches[2] == 'رسانه' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked media")
+				return unlock_group_media(msg, data, target)
+			end
+			if matches[2] == 'یوزرنیم' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked disabled username")
+				return unlock_group_username(msg, data, target)
+			end
+			if matches[2] == 'خروج' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked leave")
+				return unlock_group_leave(msg, data, target)
+			end
+			if matches[2] == 'ربات' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked bots")
+				return unlock_group_bots(msg, data, target)
+			end
+			if matches[2] == 'اپراتور' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked operator")
+				return unlock_group_operator(msg, data, target)
+			end
+		end
+
 				if matches[1] == 'lock' and is_momod(msg) then
 			local target = msg.to.id
 			     if matches[2] == 'all' then
